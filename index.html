@@ -1,40 +1,74 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Niels Terwiesch</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-		<link href='https://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+		<title>Geolocate</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href='https://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="css/application.css">
-    <link rel="stylesheet" href="style.css">
-    
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
+	<body class="">
 
-	<body>
-		<header class="clearfix main_navigation center">
-			<a href ="index.html" class="name">Home</a>
-			<nav class="nav">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main">
+						<header>
+							<span class="avatar"><img src="https://cloud.githubusercontent.com/assets/9834624/12076269/ef2ed368-b171-11e5-9bdb-f5708c157bf8.jpg" alt="" style="width:122px;height:122px;"/></span>
+							<h1>Geolocate</h1>
+							<p></p>
+                            <p>Find your longitude and latitude</p>
+
+<button onclick="getLocation()" class="button">Click here</button>
+
+<p id="demo"></p>
+
+						</header>
+						<footer>
+							<ul>
+                                <!-- to fix
+								<li><a href="#" class="fa-github">Github</a></li>
+								<li><a href="#" class="fa-twitter">Twitter</a></li>
+							     -->
+                            </ul>
+						</footer>
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<ul class="copyright">
+						</ul>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
 			
-			</nav>
-		</header>
-  
-  
-    <div class="wrapperpage wrapper_padding clearfix">
-	<h1>Niels Terwiesch</h1>
-	<br>
-	<br>
-	<br>
-	 <a href="https://github.com/1Niels" target="_blank" class="a"> <i class="fa fa-github"> </i></a>
-         <a href="https://instagram.com/321niels" target="_blank" class="a"> <i class="fa fa-instagram"> </i></a>
-    </div>
-		<footer id ="main_footer">
-			<p class="copyright">2015 Niels</p>
-			<nav>
-        <a href="https://github.com/1Niels" target="_blank" class="a"> <i class="fa fa-github"> </i></a>
-        <a href="https://instagram.com/321niels" target="_blank" class="a"> <i class="fa fa-instagram"> </i></a>
-        <a href="https://www.facebook.com/" target="_blank" class="a"> <i class="fa fa-facebook"> </i></a>
-        
-			</nav>
-		</footer>
+			<script>
+				if ('addEventListener' in window) {
+					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
+					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+				}
+			</script>
+    
+        <script>
+                var x = document.getElementById("demo");
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;	
+}
+			</script>
+
+
 	</body>
 </html>
