@@ -30,7 +30,6 @@
 			    
 
 
-<button onclick="getLocation()" class="button">Click here</button>
 
 <p id="demo"></p>
 
@@ -59,31 +58,5 @@
 					</footer>
 
 			</div>
-
-		<!-- Scripts -->
-			
-			<script>
-				if ('addEventListener' in window) {
-					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
-					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
-				}
-			</script>
-    
-        <script>
-                var x = document.getElementById("demo");
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else { 
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-}
-function showPosition(position) {
-    x.innerHTML = "Latitude: " + position.coords.latitude + 
-    "<br>Longitude: " + position.coords.longitude;	
-}
-			</script>
-
-
 	</body>
 </html>
