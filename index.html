@@ -1,16 +1,17 @@
 <!DOCTYPE HTML>
+
 <html>
 	<head>
 		<title>Niels Terwiesch</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link href='https://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
-
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-
+		<!--[if lte IE 8]><script src="assets/js/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
-	<body class="">
+	<body class="is-loading">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -18,36 +19,18 @@
 				<!-- Main -->
 					<section id="main">
 						<header>
-							<span class="avatar"><img src="https://cloud.githubusercontent.com/assets/9834624/12076269/ef2ed368-b171-11e5-9bdb-f5708c157bf8.jpg" alt="" style="width:122px;height:122px;"/></span>
+							<span class="avatar"><img src="images/avatar.jpg" alt="" /></span>
 							<h1>Niels Terwiesch</h1>
-							<p><a href="https://github.com/1Niels" target="_blank" class="a"> <i class="fa fa-github"> </i></a>
-							 <a href="https://instagram.com/321niels" target="_blank" class="a"> <i class="fa fa-instagram"> </i></a></p>
-                       
-                            				
-							 
-
+                            <hr>
                             
-			    
-
-
-
-<p id="demo"></p>
-
 						</header>
+					
 						<footer>
-							
 							<ul class="icons">
-								
-								<li><a href="#" class="fa-twitter">Twitt</a></li>
-								<li><a href="#" class="fa-instagram"><i class="fa fa-instagram">Instagram</i></a></li>
+								<li><a href="#" class="fa-github">Github</a></li>
+								<li><a href="#" class="fa-instagram">Instagram</a></li>
 								<li><a href="#" class="fa-facebook">Facebook</a></li>
-								<li><a href="#" class="fa-facebook">Facebook</a></li>
-								<li><a href="#" class="fa-twitter">Twitter</a></li>
-						
-							
 							</ul>
-							
-                        				</ul>
 						</footer>
 					</section>
 
@@ -58,5 +41,15 @@
 					</footer>
 
 			</div>
+
+		<!-- Scripts -->
+			<!--[if lte IE 8]><script src="assets/js/respond.min.js"></script><![endif]-->
+			<script>
+				if ('addEventListener' in window) {
+					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
+					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+				}
+			</script>
+
 	</body>
 </html>
