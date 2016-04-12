@@ -854,3 +854,20 @@
 		body.is-ie #wrapper {
 			height: 100%;
 		}
+body {
+  background: #000000;
+  margin: 16px;
+  color: white;
+}
+a {
+  color: #FFFFFF;
+}
+.circle {
+  background: #2a2a2a;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+}
