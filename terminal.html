@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <!-- Title -->
+    <title>Niels Terwiesch</title>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- Javascript & JQuery -->
+    <script href="js/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <style>
+    body {
+    background-color: #2B3D50;
+}
+#head {
+    font-family: monospace;
+    color: #fff;
+    margin: auto;
+    padding: 35px;
+    font-size: 40px;
+    text-align: center;
+}
+#bar {
+    text-align: center;
+    width: 750px;
+    height: 25px;
+    background-color: #DAD9D9;
+    margin: 0 auto;
+    font-family: monospace;
+    padding: auto;
+    float: none;
+    border-radius: 5px;
+}
+#red {
+    background-color: #E94B35;
+    border-radius: 100%;
+    width: 15px;
+    height: 15px;
+    margin: 0 auto;
+    left: -47%;
+    bottom: -20%;
+    position:relative;
+}
+#yellow {
+    background-color: #f0f000;
+    border-radius: 100%;
+    width: 15px;
+    height: 15px;
+    margin: 0 auto;
+    left: -44%;
+    bottom: 40%;
+    position:relative;
+    display: block;
+}
+#green {
+    background-color: #1AAF5C;
+    border-radius: 100%;
+    width: 15px;
+    height: 15px;
+    margin: 0 auto;
+    left: -41%;
+    bottom: 99%;
+    position:relative;
+    display: block;
+}
+#screen {
+    background-color: #33485E;
+    width: 750px;
+    height: 450px;
+    border-radius: 2%;
+    margin: 0 auto;
+    padding: 1px;
+}
+span {
+    color: #fff;
+    font-family: monospace;
+    font-size: 15px;
+    text-align: left;
+    position: static;
+}
+
+.current:after {
+	content:"_";
+	opacity: 0;
+	animation: cursor 1s infinite;
+}
+
+@keyframes cursor {
+	0% {
+		opacity: 0;
+	}
+	40% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	90% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+    </style>
+    <script>
+    function myFunction() {
+    var d = new Date();
+    var weekday = new Array(7);
+    weekday[0] = "Sun";
+    weekday[1] = "Mon";
+    weekday[2] = "Tue";
+    weekday[3] = "Wed";
+    weekday[4] = "Thu";
+    weekday[5] = "Fri";
+    weekday[6] = "Sat";
+
+    var monthNames = [
+  "Jan", "Feb", "Mar",
+  "Apr", "May", "Jun", "Jul",
+  "Aug", "Sep", "Oct",
+  "Nov", "Dec"
+];
+
+    var day = weekday[d.getDay()];
+    var date = new Date();
+    var dayofmonth = date.getDate();
+    var monthIndex = date.getMonth();
+    var year = date.getFullYear();
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+    var second = date.getSeconds();
+    document.getElementById("login").innerHTML = 'Last login: ' + day + ' ' + monthNames[monthIndex] + ' ' +dayofmonth + ' ' + hour + ":" + minute + ":" + second + " " + "on ttys000";
+}
+    </script>
+    <script>
+    $(document).ready(function(){
+        $("#init").hide();
+        $("#init").click();
+    })
+    </script>
+    </head>
+
+    <body>
+        
+      <div id="head"> Niels Terwiesch </div>
+<div id="bar">
+    <div id="red">
+    </div>
+    <div id="yellow">
+    </div>
+    <div id="green">
+    </div>
+</div>
+    <div id="screen">
+    <button id="init" onclick="myFunction()"></button>
+      <span id="login">Last login: Sun Sep 4 20:04:50 on ttys000</span>
+      <br>
+       <span class="current">niels:~ Terwiesch$ </span>
+    </div>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
