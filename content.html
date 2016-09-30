@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <!-- Title -->
+    <title>Niels Terwiesch</title>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/modal.css">
+    <!-- Javascript & JQuery -->
+    <script href="js/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script>
+        $(document).ready(function(){
+            $(".scroll-lock").click(function(){
+                $('html, body').css({
+                'overflow': 'hidden',
+                'height': '100%'
+                })
+            }); 
+            $(".close").click(function(){
+                $('html, body').css({
+                    'overflow': '',
+                    'height': '',
+                })
+            })
+            
+            
+        })
+       
+    </script>
+</head>
+
+    <body>
+        <!-- Left/School -->
+        <div id="left">
+            <a href="#modal-left"><img class="main-imgs fade scroll-lock pencil" style="top: 20%" src="assets/Pencil.svg" draggable="false"></a>
+        </div>
+        
+        <!-- Center/Rowing -->
+        <div id="center">
+            <a href="#modal-center"><img class="main-imgs fade scroll-lock" src="assets/HarrtionBlade.svg" draggable="false"></a>
+        </div>
+        
+        <!-- Right/Coding -->
+        <div id="right">
+            <a href="#modal-right"><img class="main-imgs fade scroll-lock" src="assets/imac.svg" draggable="false"></a>
+        </div>
+        
+        <!-- Modals -->
+        <!-- Left Modal/School Modal -->
+        <div class="modal" id="modal-left" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-header">
+                    <h2>- School -</h2>
+                    <a href="#close" class="btn-close close" aria-hidden="true">×</a> <!--CHANGED TO "#close"-->
+                </div>
+                <div class="modal-body">
+                    <p>Stuff about school</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#close" class="btn close">Close</a>  <!--CHANGED TO "#close"-->
+                </div>
+            </div>
+        </div>
+        <!-- Center Modal/Rowing Modal -->
+        <div class="modal" id="modal-center" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-header">
+                    <h2>- Rowing -</h2>
+                    <a href="#close" class="btn-close close" aria-hidden="true">×</a> <!--CHANGED TO "#close"-->
+                </div>
+                <div class="modal-body">
+                    <p>Stuff about rowing</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#close" class="btn close">Close</a>  <!--CHANGED TO "#close"-->
+                </div>
+            </div>
+        </div>
+        <!-- Right Modal/Coding Modal -->
+        <div class="modal" id="modal-right" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-header">
+                    <h2>- Coding -</h2>
+                    <a href="#close" class="btn-close close" aria-hidden="true">×</a> <!--CHANGED TO "#close"-->
+                </div>
+                <div class="modal-body">
+                    <p>Stuff about coding</p>
+                    <br>
+                     <br>
+                     <br>
+                    
+                     <br>
+                     <br>
+                     <br>
+                    
+                </div>
+                <div class="modal-footer">
+                    <a href="#close" class="btn close">Close</a>  <!--CHANGED TO "#close"-->
+                </div>
+            </div>
+        </div>
+
+        
+        
+        <!-- Bellow/General -->
+        <div id="bottom">
+            <p>Bellow</p>
+        </div>
+    </body>
+</html>
+
+
+
