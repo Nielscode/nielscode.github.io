@@ -49,10 +49,6 @@ hr {
     display: inline-block;
 }
 
-#left-div a:hover {
-    color: #e5e5e5;
-}
-
 #left-div p {
     font-size: 1.5em;
 }
@@ -98,9 +94,6 @@ CENTER CONTENT
     display: inline-block;
 }
 
-#center-div a:hover {
-    color: #e5e5e5;
-}
 
 #center-div p {
     font-size: 1.5em;
@@ -147,9 +140,6 @@ RIGHT CONTENT
     display: inline-block;
 }
 
-#right-div a:hover {
-    color: #e5e5e5;
-}
 
 #right-div p {
     font-size: 1.5em;
