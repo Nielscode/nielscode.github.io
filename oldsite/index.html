@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="A personal description of myself, Niels Terwiesch">
+    <meta name="keywords" content="Niels Terwiesch, Niels, Terwiesch, Nielsio, Nielscode">
+    <meta name="author" content="Niels Terwiesch">
+    <!-- Title -->
+    <title>Niels Terwiesch</title>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- Javascript & JQuery -->
+    <script href="js/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <script>
+        $(document).ready(function(){ 
+            $(".load").fadeOut(1500);
+            //Cols
+            $("#left").hide();
+            $("#center").hide();
+            $("#right").hide();
+            //Load
+           
+            //Full-size overlay
+            $(".fade-overlay").click(function(){
+                $("#overlay").fadeOut(600, function(){
+                $("#left").fadeIn(700);
+                $("#center").fadeIn(700);
+                $("#right").fadeIn(700);
+                });
+            });
+            //slogan + down-arrow
+            $("#down-arrow").hover(function(){
+                $("#slogan").addClass("grow");
+                $("#down-arrow").addClass("grow");
+            }, function(){
+                $("#slogan").removeClass("grow");
+                $("#down-arrow").removeClass("grow");
+            });
+            
+            //Col content
+            $("#left-content").hide();
+            $("#center-content").hide();
+            $("#right-content").hide();
+            $(".scroll-lock").click(function(){
+                $('html, body').css({
+                'overflow': 'hidden',
+                'height': '100%'
+                })
+            }); 
+            $(".close").click(function(){
+                $('html, body').css({
+                    'overflow': '',
+                    'height': '',
+                })
+            })
+            //Left/Pencil Show and Hide content
+           $(".pencil").click(function(){
+                $('body').css("background-color", '#7dcc93');
+                $("#oar").fadeOut(400);
+                $("#desktop").fadeOut(400);
+                $("#center").fadeOut(400);
+                $("#right").fadeOut(400);
+                $("#left-content").show(300);
+                
+            })
+           $(".left-content-hide").click(function(){
+               $("#left-content").hide(300);
+               $("#center").show(400);
+               $("#right").show(400);
+           })
+        //Center/Rowing Show and Hide content
+        $(".oar").click(function(){
+             $('body').css("background-color", '#f76160');
+             $("#desktop").fadeOut(400);
+             $('#pencil').fadeOut(400);
+             $("#left").fadeOut(400);
+             $("#right").fadeOut(400);
+             $("#center-content").show(300);
+        })
+         $(".center-content-hide").click(function(){
+               $("#center-content").hide(300);
+               $("#left").show(400);
+               $("#right").show(400);
+           })
+    //Right/Coding Show and Hide content
+         $(".desktop").click(function(){
+             $('body').css("background-color", '#23a6de');
+             $("#oar").fadeOut(400);
+             $('#pencil').fadeOut(400);
+             $("#left").fadeOut(400);
+             $("#center").fadeOut(400);
+             $("#right-content").show(300);
+        })
+         $(".right-content-hide").click(function(){
+               $("#right-content").hide(300);
+               $("#left").show(400);
+               $("#center").show(400);
+           })
+         
+         
+        })
+        
+       
+    </script>
+</head>
+    <body>
+         <div class="full-size load"></div>
+        <div class="full-size"  id="overlay">
+            
+            <div id="top"><br><br><br></div>
+            <img id="overlayprofilepic" src="assets/overlaypic.png" >
+        
+<div class="icon-bar">
+  <a href="#"><i><img src="assets/gallery-icon.svg" class="hvr-grow" width="100%"></i></a>
+  <a href="https://github.com/1Niels"><i><img src="assets/github-icon.svg" class="hvr-grow" width="100%"></i></a>
+  <a href="https://www.instagram.com/nielsterwiesch/"><i><img src="assets/instagramlogo.svg" class="hvr-grow" width="100%"></i></a>
+  <a href="#"><i><img src="assets/mail-icon.svg" class="hvr-grow" width="100%"></i></a>
+  
+</div>
+
+<br>
+<br>
+            <img src="assets/down-arrow.svg" id="down-arrow" class="hvr-grow down-arrow fade-overlay">
+            <p class="hvr-grow slogan fade-overlay" id="slogan">Student. Rower. Coder.</p>
+        </div>
+<!--
+        <div id="bottom-arrow">
+            <p class="hvr-grow">Student. Rower. Coder.</p>
+        </div>
+        -->
+        <!-- Left/School -->
+        <div id="left">
+            <a href="#"><img class="main-imgs fade scroll-lock pencil hvr-grow" style="top: 20%" src="assets/Pencil.svg" draggable="false"></a>
+        </div>
+        <!-- Left/School Content -->
+        <div id="left-content" class="left-content">
+            <div id="left-div">
+                <a class="fade left-content-hide hvr-float"><h1>&larr; Harriton High School</h1></a>
+                
+            <hr style="color: #ffffff;">
+           <p>(In development)</p>
+            <p>Current Sophomore at Harriton High School</p>
+        </div>
+        </div>
+        
+
+        <div id="center">
+            <a href="#"><img class="main-imgs fade scroll-lock oar hvr-grow" src="assets/HarrtionBlade.svg" draggable="false"></a>
+        </div>
+        
+         <div id="center-content" class="center-content">
+            <div id="center-div">
+                <a class="fade center-content-hide hvr-float"><h1>&larr; Rowing</h1></a>
+            <hr style="color: #ffffff;">
+           <p>(In development)</p>
+            <p>active rower</p>
+        </div>
+        </div>
+      
+        <div id="right">
+            <a href="#"><img class="main-imgs fade scroll-lock desktop hvr-grow" src="assets/imac.svg" draggable="false"></a>
+        </div>
+        
+          <div id="right-content" class="right-content">
+            <div id="right-div">
+                <a class="fade right-content-hide hvr-float"><h1>&larr; Programming</h1></a>
+            <hr style="color: #ffffff;">
+          <p>(In development)</p>
+            <p>active coder</p>
+        </div>
+        </div>
+        <!-- Bellow/General 
+        <div id="bottom">
+            <p>Bellow</p>
+        </div>
+        -->
+
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
