@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Harriton TSA Team 901 Software Development</title>
+    <title>Geo - Quiz</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <link rel=stylesheet href="css/base.css"/>
+    <link rel="icon" href="HarritonLogo.jpg">
 </head>
 <body>
 
@@ -28,7 +29,7 @@
 <script src="js/jquery-1.9.1.js"></script>
 <script src="js/jquery-ui.js"></script>
 <link rel=stylesheet href="css/jquery-ui.css" />
-<link rel="icon" href="HarritonLogo.jpg">
+
 <!-- ------------------------------------------------------------ -->
 
 <div id="overlay"></div>
@@ -37,9 +38,19 @@
 	<h2 id = "country" style="padding-bottom: 0.25em;"></h2>
 
 </div>
+
 <div style="position: absolute; width: 100%; height: 100px;text-align: left; color: white; padding-top: 1em;">
 <h2 id="score" style="text-align: left; padding-left: 5%;">Score: 0/0</h2>
+<h2 id="strikes" style="text-align: left; padding-left: 5%;">Strikes: 0</h2>
+<!-- <h2 id="help" style="text-align: left; padding-left: 5%;">Show Me</h2> -->
 </div>
+<!--
+<div style="position: absolute; width: 100%; height: 100px;text-align: right; color: white; padding-top: 1em; float: right;">
+<h2 id="strikes" style="text-align: right; padding-right: 5%;">Show Me</h2>
+</div>
+
+-->
+
 <div id="ThreeJS" style=" left:0px; top:0px"></div>
 
 <script id="globeVertexShader" type="x-shader/x-vertex">
@@ -116,7 +127,7 @@ animate();
 
 // FUNCTIONS
 var country_names = ['Peru','Burkina Faso','France','Libya','Belarus','Pakistan','Indonesia','Yemen','Madagascar','Bolivia','Ivory Coast',
-					'Algeria','Swizterland','Cameroon','Macedonia','Botswana','Ukraine','Kenya',"China",'Jordan','Mexico','United Arab Emirates',
+					'Algeria','Swizterland','Cameroon','Macedonia','Botswana','Ukraine','Kenya','Taiwan','Jordan','Mexico','United Arab Emirates',
 					'Belize','Brazil','Sierra Leone','Mali','Democratic Republic of the Congo','Italy','Somalia','Afghanistan','Bangladesh',
 					'Dominican Republic','Guinea-Bissau','Ghana','Austria','Sweden','Turkey','Uganda','Mozambique','Japan','New Zealand',
 					'Cuba','Venezuela','Portugal','Colombia','Mauritania','Angola','Germany','Sudan','Thailand','Australia','Papua New Guinea',
@@ -145,23 +156,10 @@ for (v in countryColorMap){
     values.push(countryColorMap[v])
 }
 
-var correct = 0;
-var wrong = 0;
-var attempts = 0;
-
-function score(a){
-	attempts += 1;
-	if (a == 0){
-		wrong += 1;
-	}
-	if (a == 1){
-		correct += 1;
-	}
-	console.log(correct/(wrong+correct))
-	document.getElementById("score").innerHTML = correct + "/" + attempts;
-}
 var randTest = []
 var i = 0;
+
+//Random country generator
 function* randomCountry(){
   var x = true;
   var randInt = 0
@@ -179,29 +177,86 @@ function* randomCountry(){
   }
 }
 
+
 var countryAndLocation = c.next().value;
 var firstCountry = countryAndLocation[0];
 firstCountry = country_names[keys.indexOf(firstCountry)];
 document.getElementById("question").innerHTML = "Where is " + (firstCountry) + " located? ";
 
 //Quiz function
-function quiz(prop, countryCode){
+var correct = 0;
+var wrong = 0;
+var attempts = 0;
+
+function score(a){
+	attempts += 1;
+	if (a == 0){
+		wrong += 1;
+	}
+	if (a == 1){
+		correct += 1;
+	}
+	//console.log(correct/(wrong+correct))
+	document.getElementById("score").innerHTML = "Score: " + correct + "/" + attempts;
+}
+
+var strikes = 0;
+function strike(s){
+	if (s == 0){
+		strikes++;
+	}
+	if (s == 1){
+		strikes = 0;
+	}
+	document.getElementById('strikes').innerHTML = "Strikes: " + strikes;
+}
+
+function highlightCountry(location, countryCode=0, lookupContext){
+		//Highlight country
+		console.log("location: " + location);
+		console.log("lookupContext: " + lookupContext);
+		for (var i = 0; i < 228; i++)
+		{
+			if (i == 0) 
+				lookupContext.fillStyle = "rgba(0,0,0,1.0)"
+			else if (i == countryCode)
+				lookupContext.fillStyle = "rgba(50,50,0,0.5)"
+			else if (i == location)
+				lookupContext.fillStyle = "rgba(250,0,0,0.5)"
+			else
+				lookupContext.fillStyle = "rgba(0,0,0,1.0)"
+				
+			lookupContext.fillRect( i, 0, 1, 1 );
+		}
+		
+		lookupTexture.needsUpdate = true;
+}
+
+function quiz(prop, countryCode, lookupContext){
 	var country = countryAndLocation[0];
 	var country_index = keys.indexOf(country);
 	var country_name = country_names[country_index]
     var location = countryAndLocation[1];
+    
+	if (strikes >= 2){
+		highlightCountry(location, countryCode, lookupContext);
+	}
+	
     document.getElementById("question").innerHTML = "Where is " + (country_name).toString() + " located? ";
+    
 	if (countryCode==location){
-		console.log("Correct!")
+		//console.log("Correct!")
 		countryAndLocation = c.next().value
 		country = countryAndLocation[0];
 		country_name = country_names[keys.indexOf(country)];
 		score(1);
+		strike(1);
 		document.getElementById("question").innerHTML = "Where is " + (country_name).toString() + " located? ";
 		document.getElementById("country").innerHTML = "Correct!";
 	}
 	else {
 		score(0);
+		strike(0);
 		console.log("Country is " + country_name + " Location is " + location + " Answer is " + prop + " " + countryCode)
 		prop_name = country_names[keys.indexOf(prop)];
 		
@@ -368,28 +423,10 @@ function mouseClick( event )
 		var u = Math.round(4096 * (1 - (0.5 + Math.atan2(d.z, d.x) / (2 * Math.PI))));
 		var v = Math.round(2048 * (0.5 - Math.asin(d.y) / Math.PI));
 		var p = mapContext.getImageData(u,v,1,1).data;
+		console.log(p);
 		countryCode = p[0];
 		
-		for( var prop in countryColorMap ) {
-        if( countryColorMap.hasOwnProperty( prop ) ) {
-             if( countryColorMap[ prop ] === countryCode )
-            	quiz(prop, countryCode)
-            	 /*var x = prop
-            	 quiz(prop);
-            	 if (x == undefined){
-            	 	document.getElementById("country").innerHTML = "Not a country";
-            	 }
-            	 else {
-            	 	document.getElementById("country").innerHTML = "Country: " + x;
-                 console.log(x)
-            	 }
-            	 */
-                 
-			}
-		} // end for loop
-		
-		lookupContext.clearRect(0,0,256,1);
-		
+		//Highlight country
 		for (var i = 0; i < 228; i++)
 		{
 			if (i == 0) 
@@ -402,10 +439,20 @@ function mouseClick( event )
 			lookupContext.fillRect( i, 0, 1, 1 );
 		}
 		
+		for( var prop in countryColorMap ) {
+        if( countryColorMap.hasOwnProperty( prop ) ) {
+             if( countryColorMap[ prop ] === countryCode )
+            	quiz(prop, countryCode, lookupContext)
+			}
+		} // end for loop
+		
+		//lookupContext.clearRect(0,0,256,1);
+		
 		lookupTexture.needsUpdate = true;
 	}
 
 } // end mouseClick function
+
 function isInArray(value, array) {
   return array.indexOf(value) > -1;
 }
@@ -430,34 +477,6 @@ function render()
 	renderer.render( scene, camera );
 	// composer.render(); // use this line for anti-aliasing
 }
-
-
-
-
-/*
-const readline = require('readline');
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
-function Answer(){
-    var countryAndLocation = c.next().value
-    country = countryAndLocation[0]
-    location = countryAndLocation[1]
-    console.log(countryAndLocation)
-rl.question("Where is " + (country).toString() + " located? ", (answer) => {
-    if (answer == location){
-        console.log("Correct!");
-    }
-    else {
-        console.log("Wrong")
-    }
-  rl.close();
-});}
-*/
-
 </script>
 
 </body>
